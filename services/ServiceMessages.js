@@ -61,7 +61,7 @@ class ServiceMessages {
     })
       .then(response => response.json())
       .then(value => {
-        if (value.current_response.messages.length > 1) {
+        if (value.current_response.messages.length !== 0) {
           return new Promise((resolve, reject) => {
             let promises = value.current_response.messages.map(msg => {
               return searchPokeAPI(msg.entity, value.current_response.intent_info.id, msg.text)
